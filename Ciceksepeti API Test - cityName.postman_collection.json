@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "0c2f629b-5a74-407d-bc99-c6d286b07a12",
+		"name": "Ciceksepeti API Test - cityName",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ankara",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let cityName = pm.request.url.getQueryString().split('=')[1].toUpperCase()\r",
+							"console.error(cityName)\r",
+							"let jsonData = pm.response.json()\r",
+							"let actualResp = []\r",
+							"\r",
+							"let expectedResp = \r",
+							"[\r",
+							"    cityName\r",
+							"]\r",
+							"\r",
+							"_.each(jsonData.reviewDtos, (item) => {\r",
+							"    if(item.cityName != cityName) {\r",
+							"        actualResp.push(item.cityName)\r",
+							"    }\r",
+							"    else {\r",
+							"        actualResp[0]=cityName\r",
+							"    }   \r",
+							"               \r",
+							"})\r",
+							"\r",
+							"let result = tests[\"Check response is true\"] = _.isEqual(expectedResp,actualResp)\r",
+							"\r",
+							"if(!result)\r",
+							"    console.log(actualResp)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a7186cd5-de01-4d09-adc9-9cddfb83e72e.mock.pstmn.io?cityName=ankara",
+					"protocol": "https",
+					"host": [
+						"a7186cd5-de01-4d09-adc9-9cddfb83e72e",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"query": [
+						{
+							"key": "cityName",
+							"value": "ankara"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "İstanbul",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let cityName = pm.request.url.getQueryString().split('=')[1].toUpperCase()\r",
+							"let jsonData = pm.response.json()\r",
+							"let actualResp = []\r",
+							"\r",
+							"let expectedResp = \r",
+							"[\r",
+							"    cityName\r",
+							"]\r",
+							"\r",
+							"_.each(jsonData.reviewDtos, (item) => {\r",
+							"    if(item.cityName != cityName) {\r",
+							"        actualResp.push(item.cityName)\r",
+							"    }\r",
+							"    else {\r",
+							"        actualResp[0]=cityName \r",
+							"    }             \r",
+							"})\r",
+							"\r",
+							"let result = tests[\"Check response is true\"] = _.isEqual(expectedResp,actualResp)\r",
+							"\r",
+							"if(!result)\r",
+							"    console.log(actualResp)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a7186cd5-de01-4d09-adc9-9cddfb83e72e.mock.pstmn.io?cityName=istanbul",
+					"protocol": "https",
+					"host": [
+						"a7186cd5-de01-4d09-adc9-9cddfb83e72e",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"query": [
+						{
+							"key": "cityName",
+							"value": "istanbul"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Van",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let cityName = pm.request.url.getQueryString().split('=')[1].toUpperCase()\r",
+							"\r",
+							"let expectedResp = \"VAN\"\r",
+							"\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"let result = tests[\"Check response is true\"] = _.isEqual(expectedResp,cityName)\r",
+							"\r",
+							"if(!result)\r",
+							"    console.log(cityName)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a7186cd5-de01-4d09-adc9-9cddfb83e72e.mock.pstmn.io?cityName=van",
+					"protocol": "https",
+					"host": [
+						"a7186cd5-de01-4d09-adc9-9cddfb83e72e",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"query": [
+						{
+							"key": "cityName",
+							"value": "van"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json()\r",
+							"let expectedResp = \"'cityName' can not be null.\"\r",
+							"\r",
+							"let actualResp =jsonData.cityName[0]\r",
+							"\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"let result = tests[\"Check response is true\"] = _.isEqual(expectedResp,actualResp)\r",
+							"\r",
+							"if(!result)\r",
+							"    console.log(actualResp)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://a7186cd5-de01-4d09-adc9-9cddfb83e72e.mock.pstmn.io?cityName",
+					"protocol": "https",
+					"host": [
+						"a7186cd5-de01-4d09-adc9-9cddfb83e72e",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"query": [
+						{
+							"key": "cityName",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
