@@ -13,7 +13,6 @@
 					"script": {
 						"exec": [
 							"let cityName = pm.request.url.getQueryString().split('=')[1].toUpperCase()\r",
-							"console.error(cityName)\r",
 							"let jsonData = pm.response.json()\r",
 							"let actualResp = []\r",
 							"\r",
